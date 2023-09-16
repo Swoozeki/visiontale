@@ -3,8 +3,8 @@
 </script>
 
 <nav class="m-6 join fixed">
-	<a href="/" class="join-item btn">Home</a>
-	<a href="/stories/the-wind-and-the-sun" class="join-item btn">Read</a>
+	<a href="/" class="join-item btn hover:btn-primary">Home</a>
+	<a href="/stories/the-wind-and-the-sun" class="join-item btn hover:btn-primary">Read</a>
 </nav>
 
 <slot />
