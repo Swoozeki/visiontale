@@ -1,6 +1,11 @@
 import type { Book, ParsedBook } from '$lib/models/Story';
 import type { PageLoad } from './$types';
 import { v4 as uuidv4 } from 'uuid';
+import image1 from '$lib/assets/images/the-lottery/1.jpg';
+import image2 from '$lib/assets/images/the-lottery/2.jpg';
+import image3 from '$lib/assets/images/the-lottery/3.jpg';
+import image4 from '$lib/assets/images/the-lottery/4.jpg';
+import image5 from '$lib/assets/images/the-lottery/5.jpg';
 
 export const load: PageLoad = ({ url }) => {
 	const book: Book = {
@@ -21,25 +26,25 @@ export const load: PageLoad = ({ url }) => {
 					[
 						{
 							text: 'The morning of June 27th was clear and sunny, with the fresh warmth of a full-summer day; the flowers were blossoming profusely and the grass was richly green.',
-							image: '/src/lib/assets/images/the-lottery/1.jpg'
+							image: image1
 						},
 						{
 							text: 'The people of the village began to gather in the square, between the post office and the bank, around ten o’clock; in some towns there were so many people that the lottery took two days and had to be started on June 26th, but in this village, where there were only about three hundred people, the whole lottery took only about two hours, so it could begin at ten o’clock in the morning and still be through in time to allow the villagers to get home for noon dinner.',
-							image: '/src/lib/assets/images/the-lottery/2.jpg'
+							image: image2
 						}
 					],
 					[
 						{
 							text: 'The children assembled first, of course.',
-							image: '/src/lib/assets/images/the-lottery/3.jpg'
+							image: image3
 						},
 						{
 							text: 'School was recently over for the summer, and the feeling of liberty sat uneasily on most of them; they tended to gather together quietly for a while before they broke into boisterous play, and their talk was still of the classroom and the teacher, of books and reprimands.',
-							image: '/src/lib/assets/images/the-lottery/4.jpg'
+							image: image4
 						},
 						{
 							text: 'Bobby Martin had already stuffed his pockets full of stones, and the other boys soon followed his example, selecting the smoothest and roundest stones; Bobby and Harry Jones and Dickie Delacroix—the villagers pronounced this name “Dellacroy”—eventually made a great pile of stones in one corner of the square and guarded it against the raids of the other boys.',
-							image: '/src/lib/assets/images/the-lottery/5.jpg'
+							image: image5
 						}
 					],
 					[
