@@ -25,7 +25,7 @@
 	let audioEl: HTMLAudioElement;
 	let autoPlay = false;
 	let audioTrackEnded = false;
-	$: if (audioTrackEnded && autoPlay) setTimeout(() => next(), 500);
+	$: if (audioTrackEnded && autoPlay) setTimeout(() => next(), 25);
 
 	let swiper: Swiper;
 	onMount(() => {
@@ -149,21 +149,22 @@
 									class:opacity-5={activeExcerpt.id !== `c${c + 1}p${p + 1}l${l + 1}`}
 									id={`c${c + 1}p${p + 1}l${l + 1}`}
 								>
-									{line.text}
+									{line.text}&nbsp;
 								</span>
-								{#if line.track}
-									<audio
-										autoplay
-										src={line.track}
-										bind:ended={audioTrackEnded}
-										bind:this={audioEl}
-									/>
-								{/if}
 							{/each}
 						</p>
 					{/each}
 				</div>
 			{/each}
+
+			{#if activeExcerpt.track}
+				<audio
+					autoplay
+					src={activeExcerpt.track}
+					bind:ended={audioTrackEnded}
+					bind:this={audioEl}
+				/>
+			{/if}
 
 			<div class="badge sticky bottom-6 left-1/2 translate-y-1/2 p-4">
 				{#if activeExcerpt.type === 'title'}

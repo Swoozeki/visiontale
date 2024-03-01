@@ -45,6 +45,9 @@ export const load: PageLoad = ({ url }) => {
 						{
 							text: 'Bobby Martin had already stuffed his pockets full of stones, and the other boys soon followed his example, selecting the smoothest and roundest stones; Bobby and Harry Jones and Dickie Delacroix—the villagers pronounced this name “Dellacroy”—eventually made a great pile of stones in one corner of the square and guarded it against the raids of the other boys.',
 							image: image5
+						},
+						{
+							text: 'The girls stood aside, talking among themselves, looking over their shoulders at the boys, and the very small children rolled in the dust or clung to the hands of their older brothers or sisters.'
 						}
 					],
 					[
@@ -176,8 +179,9 @@ export const load: PageLoad = ({ url }) => {
 					],
 					[{ text: '“Dunbar,” several people said. “Dunbar, Dunbar.”' }],
 					[
-						{ text: 'Mr. Summers consulted his list. “Clyde Dunbar,” he said. “That’s right.' },
-						{ text: 'He’s broke his leg, hasn’t he? Who’s drawing for him?”' }
+						{
+							text: 'Mr. Summers consulted his list. “Clyde Dunbar,” he said. “That’s right. He’s broke his leg, hasn’t he? Who’s drawing for him?”'
+						}
 					],
 					[
 						{ text: '“Me, I guess,” a woman said, and Mr. Summers turned to look at her.' },
@@ -188,7 +192,10 @@ export const load: PageLoad = ({ url }) => {
 							text: 'Although Mr. Summers and everyone else in the village knew the answer perfectly well, it was the business of the official of the lottery to ask such questions formally.'
 						},
 						{
-							text: 'Mr. Summers waited with an expression of polite interest while Mrs. Dunbar answered. “Guess I gotta fill in for the old man this year.”'
+							text: 'Mr. Summers waited with an expression of polite interest while Mrs. Dunbar answered.'
+						},
+						{
+							text: '“Horace’s not but sixteen yet,” Misses Dunbar said regretfully. “Guess I gotta fill in for the old man this year.”'
 						}
 					],
 					[
@@ -526,15 +533,26 @@ export const load: PageLoad = ({ url }) => {
 		]
 	};
 	let parsedBook: ParsedBook = [];
-	parsedBook.push({ ...book.meta.title, id: 'title', type: 'title' });
+	parsedBook.push({
+		...book.meta.title,
+		id: 'title',
+		type: 'title',
+		track: `https://nhuydzczccoqrthocapo.supabase.co/storage/v1/object/public/prod/${parsedBook.length}.mp3`
+	});
 	book.chapters.forEach((chapter, c) => {
 		if (chapter.title)
-			parsedBook.push({ ...chapter.title, id: `title-c${c + 1}`, type: 'chapter-title' });
+			parsedBook.push({
+				...chapter.title,
+				id: `title-c${c + 1}`,
+				type: 'chapter-title',
+				track: `https://nhuydzczccoqrthocapo.supabase.co/storage/v1/object/public/prod/${parsedBook.length}.mp3`
+			});
 		chapter.paragraphs.forEach((paragraph, p) => {
 			paragraph.forEach((line, l) => {
 				parsedBook.push({
 					id: `c${c + 1}p${p + 1}l${l + 1}`,
 					...line,
+					track: `https://nhuydzczccoqrthocapo.supabase.co/storage/v1/object/public/prod/${parsedBook.length}.mp3`,
 					meta: { chapter: c + 1, paragraph: p + 1, line: l + 1, total: chapter.paragraphs.length }
 				});
 			});
