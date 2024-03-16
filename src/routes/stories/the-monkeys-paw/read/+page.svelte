@@ -9,7 +9,8 @@
 	import type { SwiperOptions } from 'swiper/types';
 
 	import { ChevronDownIcon, ChevronUpIcon, PlayCircleIcon } from 'svelte-feather-icons';
-	import type { Book, ParsedBook, BookMeta } from '$lib/models/Story';
+	import type { Book, ParsedBook, BookMeta } from '$lib/models/Book';
+	import { parse } from 'svelte/compiler';
 
 	export let data: {
 		book: Book;
@@ -95,6 +96,16 @@
 		document
 			.getElementById(parsedBook[index].id)
 			?.scrollIntoView({ block: 'center', behavior: behavior || 'smooth' });
+
+		if(audioEl) {
+			audioEl.pause();
+			audioEl.currentTime = 0;
+		}
+		const el = document.getElementById(`audio-${parsedBook[index].id}`) as HTMLAudioElement;
+		if(el) {
+			audioEl = el;
+			audioEl.play();
+		}
 	}
 </script>
 
@@ -139,8 +150,8 @@
 					{#each chapter.paragraphs as paragraph, p}
 						<p
 							contenteditable="false"
-							class="p-6 {p === 0
-								? 'first-letter:float-left first-letter:mr-2 first-letter:text-7xl'
+							class="{p === 0
+								? 'first-letter:float-left first-letter:mr-2 first-letter:text-7xl '
 								: ''}"
 						>
 							{#each paragraph as line, l}
@@ -157,14 +168,9 @@
 				</div>
 			{/each}
 
-			{#if activeExcerpt.track}
-				<audio
-					autoplay
-					src={activeExcerpt.track}
-					bind:ended={audioTrackEnded}
-					bind:this={audioEl}
-				/>
-			{/if}
+			{#each parsedBook as excerpt}
+				<audio src="{excerpt.track}" bind:ended={audioTrackEnded} id={`audio-${excerpt.id}`}></audio>
+			{/each}
 
 			<div class="badge sticky bottom-6 left-1/2 translate-y-1/2 p-4">
 				{#if activeExcerpt.type === 'title'}

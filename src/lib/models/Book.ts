@@ -36,9 +36,3 @@ export type ParsedBook = Array<
 		meta?: { chapter: number; paragraph: number; line: number; total: number };
 	}
 >;
-
-export type Storyy = {
-	type?: 'title';
-	text: string;
-	track?: string;
-}[];

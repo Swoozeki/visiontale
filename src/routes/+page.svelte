@@ -17,7 +17,7 @@
 
 	<a
 		class="absolute bottom-0 right-0 m-6 flex animate-slide-right items-center gap-2"
-		href="/stories/the-lottery"
+		href="/stories/the-monkeys-paw"
 	>
 		<p>read</p>
 		<div class="rounded-full bg-base-200 p-2">

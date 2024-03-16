@@ -33,7 +33,7 @@
 				</p>
 			</div>
 			<div class="card-actions justify-end">
-				<button class="btn btn-neutral" on:click={() => goto('the-lottery/read')}>Read</button>
+				<button class="btn btn-neutral" on:click={() => goto('the-monkeys-paw/read')}>Read</button>
 			</div>
 		</div>
 	</div>
